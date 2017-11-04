@@ -1,0 +1,49 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        maven {
+            name = 'Gradle plugins'
+            url = 'https://plugins.gradle.org/m2/'
+        }
+    }
+    dependencies {
+        classpath 'org.flywaydb:flyway-gradle-plugin:3.2.1'
+        classpath 'org.jsonschema2pojo:jsonschema2pojo-gradle-plugin:0.4.18'
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.2.1"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.8.RELEASE"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'plourl-backend'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+
+    // JPA Data (We are going to use Repositories, Entities, Hibernate, etc...)
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Use MySQL Connector-J
+    compile 'mysql:mysql-connector-java'
+
+    compile 'org.jdbi:jdbi:2.72'
+    compile 'com.oracle:ojdbc:7'
+
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
