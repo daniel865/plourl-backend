@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping(value = "/api/plourl/requests")
+@CrossOrigin(origins = "*")
 public class ServiceRequestController  extends AbstractRestHandler {
 
     @Autowired

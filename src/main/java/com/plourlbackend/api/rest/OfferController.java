@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import static com.plourlbackend.api.rest.AbstractRestHandler.checkResourceFound;
 
+@RestController
+@RequestMapping(value = "/api/plourl/offer")
+@CrossOrigin(origins = "*")
 public class OfferController {
 
     @Autowired

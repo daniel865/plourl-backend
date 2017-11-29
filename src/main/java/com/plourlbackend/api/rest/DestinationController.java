@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/plourl/destinations")
+@CrossOrigin(origins = "*")
 public class DestinationController extends AbstractRestHandler {
 
     @Autowired

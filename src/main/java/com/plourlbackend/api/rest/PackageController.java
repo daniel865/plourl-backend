@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import static com.plourlbackend.api.rest.AbstractRestHandler.checkResourceFound;
 
+@RestController
+@RequestMapping(value = "/api/plourl/package")
+@CrossOrigin(origins = "*")
 public class PackageController {
 
     @Autowired

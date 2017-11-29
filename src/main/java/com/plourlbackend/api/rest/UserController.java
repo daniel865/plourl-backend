@@ -19,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/plourl/users")
+@CrossOrigin(origins = "*")
 @Api(tags = {"users"})
 public class UserController extends AbstractRestHandler {
 

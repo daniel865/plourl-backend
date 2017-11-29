@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping(value = "/api/plourl/availabilities")
+@CrossOrigin(origins = "*")
 public class AvailabilityController extends AbstractRestHandler  {
     
     @Autowired
