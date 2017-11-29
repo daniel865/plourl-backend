@@ -1,8 +1,10 @@
 package com.plourlbackend.api.rest;
 
+import com.plourlbackend.domain.Package;
 import com.plourlbackend.domain.ServiceRequest;
 import com.plourlbackend.domain.User;
 import com.plourlbackend.exceptions.DataFormatException;
+import com.plourlbackend.service.PackageService;
 import com.plourlbackend.service.ServiceRequestService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/plourl/requests")
@@ -19,6 +22,9 @@ public class ServiceRequestController  extends AbstractRestHandler {
 
     @Autowired
     private ServiceRequestService serviceRequestService;
+
+    @Autowired
+    private PackageService packageService;
 
     @RequestMapping(value = "",
             method = RequestMethod.POST,
@@ -60,5 +66,16 @@ public class ServiceRequestController  extends AbstractRestHandler {
         checkResourceFound(this.serviceRequestService.getServiceRequest(id));
         return this.serviceRequestService.deleteServiceRequest(id);
     }
+
+    @RequestMapping(value = "/{idServiceRequest}/packages",
+            method = RequestMethod.GET,
+            produces = {"application/json", "application/xml"})
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<Package> getPackagesByServiceRequest(@PathVariable("idServiceRequest") Long idServiceRequest, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        return this.packageService.getPackagesByServiceRequest(idServiceRequest);
+    }
+
+
 
 }

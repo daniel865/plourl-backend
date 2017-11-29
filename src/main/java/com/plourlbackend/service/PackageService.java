@@ -1,13 +1,14 @@
 package com.plourlbackend.service;
 
 import com.plourlbackend.dao.PackageRepository;
-import com.plourlbackend.domain.Availability;
+import com.plourlbackend.domain.*;
 import com.plourlbackend.domain.Package;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -41,6 +42,12 @@ public class PackageService {
         } else {
             throw new IllegalArgumentException("El paquete no existe");
         }
+    }
+
+    public List<Package> getPackagesByServiceRequest(Long idServiceRequest) {
+        ServiceRequest serviceRequest = new ServiceRequest();
+        serviceRequest.setId(idServiceRequest);
+        return packageRepository.findByServiceRequest(serviceRequest);
     }
 
 }
