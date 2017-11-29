@@ -12,11 +12,11 @@ public class Notification {
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_user", nullable = false)
+    @JoinColumn(name = "id_user", nullable = false, insertable = false, updatable = false)
     private User from;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_user", nullable = false)
+    @JoinColumn(name = "id_user", nullable = false, insertable = false, updatable = false)
     private User to;
 
     @Column(name = "type")

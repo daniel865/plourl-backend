@@ -12,11 +12,11 @@ public class Rating {
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_user", nullable = false)
+    @JoinColumn(name = "id_user", nullable = false, insertable = false, updatable = false)
     private User who;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_user", nullable = false)
+    @JoinColumn(name = "id_user", nullable = false, insertable = false, updatable = false)
     private User whom;
 
     @ManyToOne(fetch = FetchType.EAGER)
